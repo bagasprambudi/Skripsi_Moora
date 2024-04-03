@@ -3,7 +3,7 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-users"></i> Data Alternatif</h1>
     <div>
-        <a href="{{ asset('template/template.xlsx') }}" class="btn btn-primary"> <i class="fa fa-print"></i> Download Template Excel </a>
+        <a href="{{ asset('template/template_alternatif.xlsx') }}" class="btn btn-primary"> <i class="fa fa-print"></i> Download Template Alternatif </a>
 
         <a  data-toggle="modal" href="#upload" class="btn btn-primary"> <i class="fa fa-upload"></i> Import Excel </a>
 

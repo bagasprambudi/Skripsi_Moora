@@ -26,7 +26,7 @@ class PerhitunganController extends Controller
 
         $data['page'] = "Perhitungan";
         $data['alternatifs'] = AlternatifModel::where('periode_id', $periode->periode_id)->get();
-        $data['kriterias'] = KriteriaModel::all();
+        $data['kriterias'] = KriteriaModel::where('periode_id', $periode->periode_id)->get();
         return view('perhitungan.index', $data);
     }
 }

@@ -20,7 +20,7 @@ class PeriodeController extends Controller
             <?php
         }
 
-        $data['page'] = "Periode";
+        $data['page'] = "m_periode";
         $data['list'] = PeriodeModel::all();
         
         return view('periode.index', $data);
@@ -145,5 +145,18 @@ class PeriodeController extends Controller
         PeriodeModel::findOrFail($periode_id)->delete();
         $request->session()->flash('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
         return redirect('Periode');
+    }
+
+    public function aktifkan(Request $request){
+        $periode = PeriodeModel::find($request->periode_id);
+
+        if ($periode){
+            PeriodeModel::where('is_active', 1)->update(['is_active' => 0]);
+
+            $periode->update(['is_active' => 1]);
+            session()->put('periode', $periode);
+        }
+
+        return redirect()->back();
     }
 }

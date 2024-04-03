@@ -14,7 +14,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            UserSeeder::class
+            UserSeeder::class,
+            KriteriaSeeder::class,
+            SubKriteriaSeeder::class,
+            PeriodeSeeder::class
         ]);
     }
 }

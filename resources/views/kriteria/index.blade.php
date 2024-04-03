@@ -2,9 +2,36 @@
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-cube"></i> Data Kriteria</h1>
-
-    <a href="{{ url('Kriteria/tambah') }}" class="btn btn-success"> <i class="fa fa-plus"></i> Tambah Data </a>
+    <div>
+        <a href="{{ asset('template/template_kriteria.xlsx') }}" class="btn btn-primary"> <i class="fa fa-print"></i> Download Template Kriteria </a>
+        <a  data-toggle="modal" href="#upload" class="btn btn-primary"> <i class="fa fa-upload"></i> Import Excel </a>
+        <a href="{{ url('Kriteria/tambah') }}" class="btn btn-success"> <i class="fa fa-plus"></i> Tambah Data </a>
+    </div> 
 </div> 
+
+<!-- Modal -->
+<div class="modal fade" id="upload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel"><i class="fa fa-upload"></i> Pilih FIle Excel</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <form action="{{ url('Kriteria/upload') }}" method="post" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="file" name="file" class="form-control" required/> 
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-times"></i> Batal</button>
+                    <button type="submit" class="btn btn-success"><i class="fa fa-upload"></i> Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 @if (session('message'))
     {!! session('message') !!}

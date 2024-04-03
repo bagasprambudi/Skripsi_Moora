@@ -12,7 +12,9 @@
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
@@ -58,34 +60,34 @@ $periode = session()->get('periode');
             </div>
 
             @if(session('log.user_level_id') == '1')
-            <li class="nav-item {{ $page == 'periode' ? 'active' : '' }}">
+            <li class="nav-item {{ $page == 'm_periode' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('Periode') }}">
                     <i class="fas fa-fw fa-book"></i>
                     <span>Data Periode</span>
                 </a>
             </li>
-            <li class="nav-item {{ $page == 'Kriteria' ? 'active' : '' }}">
+            <li class="nav-item {{ $page == 'm_kriteria' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('Kriteria') }}">
                     <i class="fas fa-fw fa-cube"></i>
                     <span>Data Kriteria</span>
                 </a>
             </li>
 
-            <li class="nav-item {{ $page == 'Sub Kriteria' ? 'active' : '' }}">
+            <li class="nav-item {{ $page == 'm_sub_kriteria' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('SubKriteria') }}">
                     <i class="fas fa-fw fa-cubes"></i>
                     <span>Data Sub Kriteria</span>
                 </a>
             </li>
 
-            <li class="nav-item {{ $page == 'Alternatif' ? 'active' : '' }}">
+            <li class="nav-item {{ $page == 'm_alternatif' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('Alternatif') }}">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Data Alternatif</span>
                 </a>
             </li>
 
-            <li class="nav-item {{ $page == 'Penilaian' ? 'active' : '' }}">
+            <li class="nav-item {{ $page == 't_penilaian' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('Penilaian') }}">
                     <i class="fas fa-fw fa-edit"></i>
                     <span>Data Penilaian</span>
@@ -99,23 +101,30 @@ $periode = session()->get('periode');
                 </a>
             </li>
 
-            <li class="nav-item {{ $page == 'Hasil' ? 'active' : '' }}">
+            <li class="nav-item {{ $page == 't_hasil' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('Hasil') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Data Hasil Akhir</span>
+                    <span>Data Hasil Perangkingan</span>
+                </a>
+            </li>
+
+            <li class="nav-item {{ $page == 't_Penerima' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('Penerima') }}">
+                    <i class="fas fa-fw fa-child"></i>
+                    <span>Data Penerima Bansos</span>
                 </a>
             </li>
             @endif
 
             @if(session('log.user_level_id') == '2')
-            <li class="nav-item {{ $page == 'Hasil' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ url('Hasil') }}">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Data Hasil Akhir</span>
+            <li class="nav-item {{ $page == 't_Penerima' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('Penerima') }}">
+                    <i class="fas fa-fw fa-child"></i>
+                    <span>Data Penerima Bansos</span>
                 </a>
             </li>
             @endif
-            
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -125,7 +134,7 @@ $periode = session()->get('periode');
             </div>
 
             @if(session('log.user_level_id') == '1')
-            <li class="nav-item {{ $page == 'User' ? 'active' : '' }}">
+            <li class="nav-item {{ $page == 'd_user' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('User') }}">
                     <i class="fas fa-fw fa-users-cog"></i>
                     <span>Data User</span>
@@ -147,56 +156,60 @@ $periode = session()->get('periode');
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-            </ul>
-            <!-- End of Sidebar -->
+        </ul>
+        <!-- End of Sidebar -->
 
-            <!-- Content Wrapper -->
-            <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
 
-                <!-- Main Content -->
-                <div id="content">
+            <!-- Main Content -->
+            <div id="content">
 
-                    <!-- Topbar -->
-                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                        <!-- Sidebar Toggle (Topbar) -->
-                        <button id="sidebarToggleTop" class="btn text-info d-md-none rounded-circle mr-3">
-                            <i class="fa fa-bars"></i>
-                        </button>
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn text-info d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
 
-                        <!-- Topbar Navbar -->
-                        <ul class="navbar-nav ml-auto">
+                    <!-- Topbar Navbar -->
+                    <div class="navbar-nav navbar-nav-left mr-auto">
+                        <ul class="navbar-nav">
                             <li class="nav-item">
-                                {{ $periode->periode_nama }}
+                                Periode : {{ $periode->periode_nama }}
                             </li>
-
-                            <!-- Nav Item - User Information -->
-                            <li class="nav-item dropdown no-arrow">
-                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    <span class="text-uppercase mr-2 d-none d-lg-inline text-gray-600 small">
-                                        {{ session('log.nama') }}
-                                    </span>
-                                    <img src="{{ asset('img/user.png') }}" class="img-profile rounded-circle">
-                                </a>
-                                <!-- Dropdown - User Information -->
-                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                    aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="{{ url('Profile') }}">
-                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Profile
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Logout
-                                    </a>
-                                </div>
-                            </li>
-
                         </ul>
+                    </div>
 
-                    </nav>
-                    <!-- End of Topbar -->
+                    <ul class="navbar-nav navbar-nav-left ml-auto">
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="text-uppercase mr-2 d-none d-lg-inline text-gray-600 small">
+                                    {{ session('log.nama') }}
+                                </span>
+                                <img src="{{ asset('img/user.png') }}" class="img-profile rounded-circle">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="{{ url('Profile') }}">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
 
-                    <div class="container-fluid">
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <div class="container-fluid">

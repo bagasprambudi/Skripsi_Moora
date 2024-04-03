@@ -22,7 +22,7 @@ class SubKriteriaController extends Controller
             <?php
         }
 
-        $data['page'] = "Sub Kriteria";
+        $data['page'] = "m_sub_kriteria";
         $data['kriteria'] = KriteriaModel::where('periode_id', $periode->periode_id)->get();
         return view('sub_kriteria.index', $data);
     }

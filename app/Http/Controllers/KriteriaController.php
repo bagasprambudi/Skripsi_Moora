@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\KriteriaModel;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class KriteriaController extends Controller
 {
@@ -96,7 +97,7 @@ class KriteriaController extends Controller
             <?php
         }
 
-        $data['page'] = "Kriteria";
+        $data['page'] = "m_kriteria";
         $data['kriteria'] = KriteriaModel::findOrFail($kriteria_id);
         return view('kriteria.edit', $data);
     }
@@ -151,5 +152,33 @@ class KriteriaController extends Controller
         KriteriaModel::findOrFail($kriteria_id)->delete();        
         $request->session()->flash('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
         return redirect()->route('Kriteria');
+    }
+
+    public function upload(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|mimes:xls,xlsx'
+        ]);
+
+        $file = $request->file('file');
+        $path = $file->getRealPath();
+
+        $spreadsheet = IOFactory::load($path);
+        $sheetData = $spreadsheet->getActiveSheet()->toArray();
+
+        foreach ($sheetData as $key => $value) {
+            if ($key != 0) {
+                KriteriaModel::create([
+                    'periode_id' => $value[0],
+                    'keterangan' => $value[1],
+                    'kriteria_kode' => $value[2],
+                    'bobot' => $value[3],
+                    'jenis' => $value[4],
+                ]);
+            }
+        }
+
+        $request->session()->flash('message', '<div class="alert alert-success" role="alert">Data berhasil diupload!</div>');
+        return redirect('Kriteria');
     }
 }

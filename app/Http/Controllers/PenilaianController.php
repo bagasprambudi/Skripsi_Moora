@@ -24,7 +24,7 @@ class PenilaianController extends Controller
             <?php
         }
 
-        $data['page'] = "t_Penilaian";
+        $data['page'] = "t_penilaian";
         $data['alternatif'] = AlternatifModel::where('periode_id', $periode->periode_id)->get();
         $data['kriteria'] = KriteriaModel::where('periode_id', $periode->periode_id)->get();
         return view('penilaian.index', $data);

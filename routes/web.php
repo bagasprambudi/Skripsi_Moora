@@ -19,6 +19,7 @@ use App\Http\Controllers\AlternatifController;
 use App\Http\Controllers\PenilaianController;
 use App\Http\Controllers\PerhitunganController;
 use App\Http\Controllers\HasilController;
+use App\Http\Controllers\PenerimaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PeriodeController;
 use App\Http\Controllers\ProfileController;
@@ -41,6 +42,7 @@ Route::get('/Kriteria/tambah', [KriteriaController::class, 'tambah'])->name('kri
 Route::get('/Kriteria/edit/{kriteria_id}', [KriteriaController::class, 'edit'])->name('kriteria.edit');
 Route::get('/Kriteria/destroy/{kriteria_id}', [KriteriaController::class, 'destroy'])->name('kriteria.destroy');
 Route::post('/Kriteria/simpan', [KriteriaController::class, 'simpan']);
+Route::post('/Kriteria/upload', [KriteriaController::class, 'upload']);
 Route::post('/Kriteria/update/{kriteria_id}', [KriteriaController::class, 'update'])->name('kriteria.update');
 
 /* Sub Kriteria */
@@ -67,6 +69,7 @@ Route::get('/Periode/destroy/{periode_id}', [PeriodeController::class, 'destroy'
 Route::post('/Periode/simpan', [PeriodeController::class, 'simpan']);
 Route::post('/Periode/upload', [PeriodeController::class, 'upload']);
 Route::post('/Periode/update/{periode_id}', [PeriodeController::class, 'update'])->name('periode.update');
+Route::post('/Periode/aktifkan', [PeriodeController::class, 'aktifkan'])->name('periode.aktif');
 
 /* Penilaian */
 Route::get('/Penilaian', [PenilaianController::class, 'index'])->name('Penilaian');
@@ -78,6 +81,13 @@ Route::get('/Perhitungan', [PerhitunganController::class, 'index'])->name('Perhi
 
 /* Hasil */
 Route::get('/Hasil', [HasilController::class, 'index'])->name('Hasil');
+Route::post('/Hasil/simpan', [HasilController::class, 'simpan'])->name('hasil.simpan');
+
+/* Penerima */
+Route::get('/Penerima', [PenerimaController::class, 'index'])->name('Hasil');
+
+/* Penerima */
+Route::get('/Penerima', [PenerimaController::class, 'index'])->name('Penerima');
 
 /* Laporan */
 Route::get('/Laporan', [HasilController::class, 'Laporan'])->name('Laporan');

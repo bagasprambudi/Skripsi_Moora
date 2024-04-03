@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('alternatif_id')->index();
             $table->integer('periode_id')->index();
             $table->double( 'nilai');
+            $table->tinyInteger('is_active')->default(0);
 
             $table->foreign('alternatif_id')->references('alternatif_id')->on('m_alternatif');
             $table->foreign('periode_id')->references('periode_id')->on('m_periode');
