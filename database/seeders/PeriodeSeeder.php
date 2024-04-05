@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PeriodeSeeder extends Seeder
 {
@@ -35,11 +36,6 @@ class PeriodeSeeder extends Seeder
                 'periode_id' => 20234,
                 'periode_nama' => "2023 - Oktober s/d November",
                 'is_active' => 0,
-            ],
-            [
-                'periode_id' => 20241,
-                'periode_nama' => "2023 - Januari s/d Februari",
-                'is_active' => 1,
             ],
         ]);
     }
