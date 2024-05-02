@@ -1,0 +1,5 @@
+/* CSS */
+.checkbox-custom {
+    transform: scale(1.5); /* Ubah ukuran sesuai kebutuhan */
+    margin-right: 10px; /* Atur margin jika perlu */
+}

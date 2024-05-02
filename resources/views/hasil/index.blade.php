@@ -7,7 +7,7 @@
 <div class="card shadow mb-4">
     <!-- /.card-header -->
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-info"><i class="fa fa-table"></i> Hasil Hasil Perankingan</h6>
+        <h6 class="m-0 font-weight-bold text-info"><i class="fa fa-table"></i> Hasil Perankingan</h6>
     </div>
 
     <div class="card-body">
@@ -42,7 +42,7 @@
                             <td>{{ $keys->RW }}</td>
                             <td>{{ $keys->nilai }}</td>
                             <td>{{ $no }}</td>
-                            <td><input {{ $keys->is_active ? 'checked' : '' }} type="checkbox" name="is_active_{{ $keys->hasil_id }}" value="1"></td> <!-- Checkbox -->
+                            <td><input class="checkbox-custom" {{ $keys->is_active ? 'checked' : '' }} type="checkbox" name="is_active_{{ $keys->hasil_id }}" value="1"></td> <!-- Checkbox -->
                         </tr>
                         @php
                             $no++;
@@ -53,9 +53,12 @@
             </div>
             <!-- Tombol Simpan -->
             <div class="text-right mt-3">
-    <!-- Menambahkan onclick event handler untuk menampilkan konfirmasi -->
-    <button type="submit" class="btn btn-success" onclick="return confirmSubmit()"><i class="fa fa-save"></i> Simpan</button>
-    </div>
+                <!-- Menambahkan onclick event handler untuk menampilkan konfirmasi -->
+                <button type="submit" class="btn btn-success" onclick="return confirmSubmit()">
+                    <i class="fa fa-save fa-lg"></i> Simpan
+                </button>
+            </div>
+
         <script>
             function confirmSubmit() {
             var confirmMessage = confirm("Apakah Data Yang Anda Pilih Sudah Sesuai Dengan Data Penerima Bantuan Sosial Desa Wonomerto?");
