@@ -34,7 +34,7 @@ $periode = session()->get('periode');
                     <div style="font-size: 14pt;"><strong>PEMERINTAH KABUPATEN JOMBANG</strong></div>
                     <div style="font-size: 13pt;"><strong>KECAMATAN WONOSALAM</strong></div>
                     <div style="font-size: 12pt;"><strong>DESA WONOMERTO</strong></div>
-                    <div style="font-size: 11pt;">Jalan Bukit Pinang No.65 Wonomerto, Wonosalam, Jombang, 61476</div>
+                    <div style="font-size: 11pt;">Jalan Bukit Pinang No.65, Dsn. Ganten, Ds. Wonomerto, Kec. Wonosalam, Kab. Jombang, 61476</div>
                 </div>
             </td>
             <td style="width: 15%;" align="left"></td>
