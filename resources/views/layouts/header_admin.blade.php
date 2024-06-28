@@ -119,6 +119,37 @@ $periode = session()->get('periode');
             @endif
 
             @if(session('log.user_level_id') == '2')
+            <li class="nav-item {{ $page == 'm_periode' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('Periode') }}">
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>Data Periode</span>
+                </a>
+            </li>
+            <li class="nav-item {{ $page == 'm_sub_kriteria' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('SubKriteria') }}">
+                    <i class="fas fa-fw fa-cubes"></i>
+                    <span>Data Sub Kriteria</span>
+                </a>
+            </li>
+
+            <li class="nav-item {{ $page == 'm_alternatif' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('Alternatif') }}">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Data Alternatif</span>
+                </a>
+            </li>
+            <li class="nav-item {{ $page == 't_penilaian' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('Penilaian') }}">
+                    <i class="fas fa-fw fa-edit"></i>
+                    <span>Data Penilaian</span>
+                </a>
+            </li>
+            <li class="nav-item {{ $page == 't_hasil' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ url('Hasil') }}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Data Hasil Perangkingan</span>
+                </a>
+            </li>
             <li class="nav-item {{ $page == 't_Penerima' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ url('Penerima') }}">
                     <i class="fas fa-fw fa-child"></i>

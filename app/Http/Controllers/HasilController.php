@@ -48,25 +48,32 @@ class HasilController extends Controller
     }
 
     public function simpan(Request $request){
-        $result = false;
-
-        // Mengiterasi melalui semua input yang dikirimkan
-        foreach ($request->all() as $key => $value) {
-            if (strpos($key, 'is_active_') === 0) {
-                $id = str_replace('is_active_', '', $key);
-                $isActive = $value == '1' ? true : false;
-
-                $result = DB::table('t_hasil')->where('hasil_id', $id)->update(['is_active' => $isActive]);
+        // Mengambil semua input dari form
+        $input = $request->all();
+        unset($input['_token']);
+    
+        // Mengambil semua ID yang dicentang
+        $isActive = $request->input('is_active', []);
+    
+        // Memproses setiap hasil yang dicentang
+        foreach ($isActive as $id => $value) {
+            // Update database untuk ID yang dicentang
+            DB::table('t_hasil')->where('hasil_id', $id)->update(['is_active' => 1]);
+        }
+    
+        // Mengambil semua hasil_id dari database
+        $allIds = DB::table('t_hasil')->pluck('hasil_id')->toArray();
+    
+        // Mengatur is_active ke 0 untuk checkbox yang tidak dicentang
+        foreach ($allIds as $id) {
+            if (!array_key_exists($id, $isActive)) {
+                DB::table('t_hasil')->where('hasil_id', $id)->update(['is_active' => 0]);
             }
         }
-
-
-        if ($result) {
-            $request->session()->flash('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan!</div>');
-            return redirect()->route('Penerima');
-        } else {
-            $request->session()->flash('message', '<div class="alert alert-danger" role="alert">Data gagal disimpan!</div>');
-            return redirect()->route('Hasil');
-        }
+    
+        // Flash message dan redirect
+        $request->session()->flash('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan!</div>');
+        return redirect()->route('Penerima');
     }
+    
 }

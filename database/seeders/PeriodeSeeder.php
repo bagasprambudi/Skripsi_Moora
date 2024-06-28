@@ -37,6 +37,21 @@ class PeriodeSeeder extends Seeder
                 'periode_nama' => "2023 - Oktober s/d November",
                 'is_active' => 0,
             ],
+            [
+                'periode_id' => 20241,
+                'periode_nama' => "2024 - Januari s/d Februari",
+                'is_active' => 0,
+            ],
+            [
+                'periode_id' => 20242,
+                'periode_nama' => "	2024 - April s/d Mei",
+                'is_active' => 0,
+            ],
+            [
+                'periode_id' => 20243,
+                'periode_nama' => "2024 - Juni s/d Juli",
+                'is_active' => 1,
+            ],
         ]);
     }
 }

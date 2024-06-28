@@ -13,16 +13,16 @@ class PenilaianController extends Controller
     public function index()
     {
         $periode = session()->get('periode');
-        $user_level_id = session('log.user_level_id');
+        // $user_level_id = session('log.user_level_id');
         
-        if ($user_level_id != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
-        }
+        // if ($user_level_id != 1) {
+        //     ?>
+        //     <script>
+        //         window.location='<?php echo url("Dashboard"); ?>'
+        //         alert('Anda tidak berhak mengakses halaman ini!');
+        //     </script>
+        //     <?php
+        // }
 
         $data['page'] = "t_penilaian";
         $data['alternatif'] = AlternatifModel::where('periode_id', $periode->periode_id)->get();

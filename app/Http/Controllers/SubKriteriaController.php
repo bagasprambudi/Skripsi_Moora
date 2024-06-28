@@ -11,16 +11,6 @@ class SubKriteriaController extends Controller
     public function index()
     {
         $periode = session()->get('periode');
-        $user_level_id = session('log.user_level_id');
-        
-        if ($user_level_id != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
-        }
 
         $data['page'] = "m_sub_kriteria";
         $data['kriteria'] = KriteriaModel::where('periode_id', $periode->periode_id)->get();
@@ -29,17 +19,6 @@ class SubKriteriaController extends Controller
 
     public function simpan(Request $request)
     {
-        $user_level_id = session('log.user_level_id');
-        
-        if ($user_level_id != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
-        }
-
         $this->validate($request, [
             'periode_id' => 'required',
             'kriteria_id' => 'required',
@@ -67,17 +46,6 @@ class SubKriteriaController extends Controller
 
     public function edit(Request $request, $sub_kriteria_id)
     {
-        $user_level_id = session('log.user_level_id');
-        
-        if ($user_level_id != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
-        }
-
         $this->validate($request, [
             'periode_id' => 'required',
             'kriteria_id' => 'required',
@@ -101,17 +69,6 @@ class SubKriteriaController extends Controller
 
     public function destroy(Request $request, $sub_kriteria_id)
     {
-        $user_level_id = session('log.user_level_id');
-        
-        if ($user_level_id != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
-        }
-        
         SubKriteriaModel::findOrFail($sub_kriteria_id)->delete();
         $request->session()->flash('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
         return redirect('SubKriteria');

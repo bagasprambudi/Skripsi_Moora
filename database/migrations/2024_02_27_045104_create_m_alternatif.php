@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('alternatif_id');
             $table->integer('periode_id')->index();
             $table->string('alternatif_nama', 100);
+            $table->string('alternatif_nik', 100);
             $table->string('alternatif_alamat', 100);
             $table->string('RT', 50);
             $table->string('RW', 50);

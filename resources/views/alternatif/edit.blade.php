@@ -32,18 +32,24 @@ $periode = session()->get('periode');
                 </div>
 
                 <div class="form-group col-md-6">
+                    <label class="font-weight-bold">NIK</label>
+                    <input autocomplete="off" type="number" name="alternatif_nik" value="{{ $alternatif->alternatif_nik }}" required class="form-control"/>
+                </div>
+
+
+                <div class="form-group col-md-6">
                     <label class="font-weight-bold">Alamat</label>
                     <input autocomplete="off" type="text" name="alternatif_alamat" value="{{ $alternatif->alternatif_alamat }}" required class="form-control"/>
                 </div>
 
                 <div class="form-group col-md-6">
                     <label class="font-weight-bold">RT</label>
-                    <input autocomplete="off" type="text" name="rt" value="{{ $alternatif->RT }}" required class="form-control"/>
+                    <input autocomplete="off" type="number" name="rt" value="{{ $alternatif->RT }}" required class="form-control"/>
                 </div>
 
                 <div class="form-group col-md-6">
                     <label class="font-weight-bold">RW</label>
-                    <input autocomplete="off" type="text" name="rw" value="{{ $alternatif->RW }}" required class="form-control"/>
+                    <input autocomplete="off" type="number" name="rw" value="{{ $alternatif->RW }}" required class="form-control"/>
                 </div>
             </div>
         </div>

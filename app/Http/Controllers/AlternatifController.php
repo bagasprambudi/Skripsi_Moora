@@ -11,16 +11,6 @@ class AlternatifController extends Controller
     public function index()
     {
         $periode = session()->get('periode');
-        $user_level_id = session('log.user_level_id');
-        
-        if ($user_level_id != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
-        }
 
         $data['page'] = "m_alternatif";
         $data['list'] = AlternatifModel::where('periode_id', $periode->periode_id)->get();
@@ -29,45 +19,25 @@ class AlternatifController extends Controller
 
     public function tambah()
     {
-        $user_level_id = session('log.user_level_id');
-        
-        if ($user_level_id != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
-        }
-
         $data['page'] = "m_alternatif";
         return view('Alternatif.tambah', $data);
     }
 
     public function simpan(Request $request)
     {
-        $user_level_id = session('log.user_level_id');
-        
-        if ($user_level_id != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
-        }
-
         $this->validate($request, [
             'periode_id' => 'required',
             'alternatif_nama' => 'required',
+            'alternatif_nik' => 'required|integer',
             'alternatif_alamat' => 'required',
-            'rt' => 'required',
-            'rw' => 'required',
+            'rt' => 'required|integer',
+            'rw' => 'required|integer',
         ]);
 
         $data = [
             'periode_id' => $request->periode_id,
             'alternatif_nama' => $request->alternatif_nama,
+            'alternatif_nik' => $request->alternatif_nik,
             'alternatif_alamat' => $request->alternatif_alamat,
             'rt' => $request->rt,
             'rw' => $request->rw,
@@ -86,17 +56,6 @@ class AlternatifController extends Controller
 
     public function edit($alternatif_id)
     {
-        $user_level_id = session('log.user_level_id');
-        
-        if ($user_level_id != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
-        }
-
         $data['page'] = "m_alternatif";
         $data['alternatif'] = AlternatifModel::findOrFail($alternatif_id);
         return view('Alternatif.edit', $data);
@@ -104,26 +63,17 @@ class AlternatifController extends Controller
 
     public function update(Request $request, $alternatif_id)
     {
-        $user_level_id = session('log.user_level_id');
-        
-        if ($user_level_id != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
-        }
-
         $this->validate($request, [
             'alternatif_nama' => 'required',
+            'alternatif_nik' => 'required|integer',
             'alternatif_alamat' => 'required',
-            'rt' => 'required',
-            'rw' => 'required',
+            'rt' => 'required|integer',
+            'rw' => 'required|integer',
         ]);
 
         $data = [
             'alternatif_nama' => $request->alternatif_nama,
+            'alternatif_nik' => $request->alternatif_nik,
             'alternatif_alamat' => $request->alternatif_alamat,
             'rt' => $request->rt,
             'rw' => $request->rw,
@@ -138,17 +88,6 @@ class AlternatifController extends Controller
 
     public function destroy(Request $request, $alternatif_id)
     {
-        $user_level_id = session('log.user_level_id');
-        
-        if ($user_level_id != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
-        }
-        
         AlternatifModel::findOrFail($alternatif_id)->delete();
         $request->session()->flash('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
         return redirect('Alternatif');
@@ -171,9 +110,10 @@ class AlternatifController extends Controller
                 AlternatifModel::create([
                     'periode_id' => $value[0],
                     'alternatif_nama' => $value[1],
-                    'alternatif_alamat' => $value[2],
-                    'rt' => $value[3],
-                    'rw' => $value[4],
+                    'alternatif_nik' => $value[2],
+                    'alternatif_alamat' => $value[3],
+                    'rt' => $value[4],
+                    'rw' => $value[5],
                 ]);
             }
         }

@@ -32,11 +32,5 @@ class UserSeeder extends Seeder
             'username' => 'admin',
             'password' => '21232f297a57a5a743894a0e4a801fc3'
         ]);
-
-        PeriodeModel::insert([
-            'periode_id' => '20241',
-            'periode_nama' => '2024 - Januari s/d Februari',
-            'is_active' => 1
-        ]);
     }
 }

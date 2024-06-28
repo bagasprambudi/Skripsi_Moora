@@ -20,11 +20,11 @@
 
                     <tr align="center">
                         <th width="6%">No</th>
-                        <th>Nama Penerima</th>
+                        <th>Nama Penerima</th>  
+                        <th>NIK</th>       
                         <th>Alamat</th>
                         <th>RW</th>
-                        <th>RT</th>
-                        <th width="15%">Ranking</th>
+                        <th>RT</th>                     
                     </tr>
                 </thead>
                 <tbody>
@@ -35,10 +35,10 @@
                     <tr align="center">
                         <td>{{ $no }}</td>
                         <td align="left">{{ $keys->alternatif_nama }}</td>
+                        <td>{{ $keys->alternatif_nik }}</td>
                         <td class="text-left">{{ $keys->alternatif_alamat }}</td>
                         <td>{{ $keys->RT }}</td>
                         <td>{{ $keys->RW }}</td>
-                        <td>{{ $no }}</td>
                     </tr>
                     @php
                         $no++;

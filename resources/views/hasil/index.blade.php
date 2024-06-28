@@ -16,37 +16,32 @@
             <div class="table-responsive">
                 <table class="table table-bordered" width="100%" cellspacing="0">
                     <thead class="bg-info text-white">
-                        <?php $no = 1; ?>
-
                         <tr align="center">
                             <th width="6%">No</th>
                             <th>Nama Penerima</th>
+                            <th>NIK</th>
                             <th>Alamat</th>
                             <th>RW</th>
                             <th>RT</th>
                             <th>Nilai Akhir</th>
-                            <th width="15%">Ranking</th>
                             <th width="5%">Pilih</th> <!-- Kolom ceklis -->
                         </tr>
                     </thead>
                     <tbody>
-                        @php
-                            $no = 1;
-                        @endphp
                         @foreach ($hasil as $keys)
                         <tr align="center">
-                            <td>{{ $no }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td align="left">{{ $keys->alternatif_nama }}</td>
+                            <td>{{ $keys->alternatif_nik }}</td>
                             <td class="text-left">{{ $keys->alternatif_alamat }}</td>
                             <td>{{ $keys->RT }}</td>
                             <td>{{ $keys->RW }}</td>
                             <td>{{ $keys->nilai }}</td>
-                            <td>{{ $no }}</td>
-                            <td><input class="checkbox-custom" {{ $keys->is_active ? 'checked' : '' }} type="checkbox" name="is_active_{{ $keys->hasil_id }}" value="1"></td> <!-- Checkbox -->
+                            <td>
+                                <!-- <input type="hidden" name="hasil_id" value="{{ $keys->hasil_id }}"> -->
+                                <input class="checkbox-custom" type="checkbox" name="is_active[{{ $keys->hasil_id }}]" value="1" {{ $keys->is_active ? 'checked' : '' }}>
+                            </td> <!-- Checkbox -->
                         </tr>
-                        @php
-                            $no++;
-                        @endphp
                         @endforeach
                     </tbody>
                 </table>
@@ -59,7 +54,7 @@
                 </button>
             </div>
 
-        <script>
+            <script>
             function confirmSubmit() {
             var confirmMessage = confirm("Apakah Data Yang Anda Pilih Sudah Sesuai Dengan Data Penerima Bantuan Sosial Desa Wonomerto?");
                 if (confirmMessage) {
@@ -71,7 +66,9 @@
                 }
             }
         </script>
+        
         </form>
     </div>
 </div>
+
 @include('layouts.footer_admin')

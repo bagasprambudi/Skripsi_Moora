@@ -52,6 +52,7 @@
                     <tr align="center">
                         <th width="5%">No</th>
                         <th>Nama Penerima</th>
+                        <th>NIK</th>
                         <th>Alamat</th>
                         <th>RW</th>
                         <th>RT</th>
@@ -66,6 +67,7 @@
                         <tr align="center">
                             <td>{{ $no }}</td>
                             <td class="text-left">{{ $data->alternatif_nama }}</td>
+                            <td>{{ $data->alternatif_nik }}</td>
                             <td class="text-left">{{ $data->alternatif_alamat }}</td>
                             <td>{{ $data->RT }}</td>
                             <td>{{ $data->RW }}</td>                     

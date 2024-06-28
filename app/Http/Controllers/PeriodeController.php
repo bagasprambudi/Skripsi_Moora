@@ -9,17 +9,6 @@ class PeriodeController extends Controller
 {
     public function index()
     {
-        $user_level_id = session('log.user_level_id');
-        
-        if ($user_level_id != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
-        }
-
         $data['page'] = "m_periode";
         $data['list'] = PeriodeModel::all();
         
@@ -28,34 +17,12 @@ class PeriodeController extends Controller
 
     public function tambah()
     {
-        $user_level_id = session('log.user_level_id');
-        
-        if ($user_level_id != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
-        }
-
         $data['page'] = "m_periode";
         return view('Periode.tambah', $data);
     }
 
     public function simpan(Request $request)
     {
-        $user_level_id = session('log.user_level_id');
-        
-        if ($user_level_id != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
-        }
-
         $this->validate($request, [
             'periode_id' => 'required',
             'periode_nama' => 'required',
@@ -81,17 +48,6 @@ class PeriodeController extends Controller
 
     public function edit($periode_id)
     {
-        $user_level_id = session('log.user_level_id');
-        
-        if ($user_level_id != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
-        }
-
         $data['page'] = "m_alternatif";
         $data['periode'] = PeriodeModel::findOrFail($periode_id);
         return view('Periode.edit', $data);
@@ -99,17 +55,6 @@ class PeriodeController extends Controller
 
     public function update(Request $request, $periode_id)
     {
-        $user_level_id = session('log.user_level_id');
-        
-        if ($user_level_id != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
-        }
-
         $this->validate($request, [
             'periode_id' => 'required',
             'periode_nama' => 'required',
@@ -131,17 +76,6 @@ class PeriodeController extends Controller
 
     public function destroy(Request $request, $periode_id)
     {
-        $user_level_id = session('log.user_level_id');
-        
-        if ($user_level_id != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
-        }
-        
         PeriodeModel::findOrFail($periode_id)->delete();
         $request->session()->flash('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
         return redirect('Periode');

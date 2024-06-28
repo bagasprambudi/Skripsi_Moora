@@ -36,18 +36,23 @@ $periode = session()->get('periode');
                 </div>
 
                 <div class="form-group col-md-6">
+                    <label class="font-weight-bold">NIK</label>
+                    <input autocomplete="off" type="number" name="alternatif_nik" required class="form-control"/>
+                </div>
+
+                <div class="form-group col-md-6">
                     <label class="font-weight-bold">Alamat</label>
                     <input autocomplete="off" type="text" name="alternatif_alamat" required class="form-control"/>
                 </div>
 
                 <div class="form-group col-md-6">
                     <label class="font-weight-bold">RW</label>
-                    <input autocomplete="off" type="text" name="rt" required class="form-control"/>
+                    <input autocomplete="off" type="number" name="rt" required class="form-control"/>
                 </div>
 
                 <div class="form-group col-md-6">
                     <label class="font-weight-bold">RT</label>
-                    <input autocomplete="off" type="text" name="rw" required class="form-control"/>
+                    <input autocomplete="off" type="number" name="rw" required class="form-control"/>
                 </div>
             </div>
         </div>

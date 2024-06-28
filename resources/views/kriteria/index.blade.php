@@ -4,6 +4,7 @@
     <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-cube"></i> Data Kriteria</h1>
     <div>
         <a href="{{ asset('template/template_kriteria.xlsx') }}" class="btn btn-primary"> <i class="fa fa-print"></i> Download Template Kriteria </a>
+        <a href="{{ asset('template/contoh_kriteria.xlsx') }}" class="btn btn-primary"> <i class="fa fa-print"></i> Download Contoh Kriteria </a>
         <a  data-toggle="modal" href="#upload" class="btn btn-primary"> <i class="fa fa-upload"></i> Import Excel </a>
         <a href="{{ url('Kriteria/tambah') }}" class="btn btn-success"> <i class="fa fa-plus"></i> Tambah Data </a>
     </div> 
